@@ -21,7 +21,7 @@ module MachineF (
   version,
   operators,
   arity
-  )where
+  ) where
 
 import qualified Data.Map as Map
 
