@@ -141,7 +141,7 @@ pCode e = [pOp f0 fx | (f0:fx) <- map List.words code]
         pOp "Slide"     [v] = Slide $ read v
         pOp "Update"    [v] = Update $ read v
         pOp "Return"    []  = Return
-        pOp "Halt"      [ ] = Halt
+        pOp "Halt"      []  = Halt
         
         code = List.lines $ Text.unpack $ Encode.decodeUtf8 $ Zip.fromEntry e
 
