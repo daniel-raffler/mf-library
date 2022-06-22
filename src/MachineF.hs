@@ -16,8 +16,8 @@
 -- | Library to read and write exe files.
 --   Defines operations and structures of the abstract machine
 module MachineF (
-  module ByteCode,
-  module Atoms,
+  module MachineF.ByteCode,
+  module MachineF.Atoms,
   version,
   operators,
   arity
@@ -25,16 +25,18 @@ module MachineF (
 
 import qualified Data.Map as Map
 
-import qualified MachineF.ByteCode as ByteCode
-import qualified MachineF.Atoms    as Atoms
+import MachineF.ByteCode
+import MachineF.Atoms
 
 import Data.Text.Lazy (Text)
 import Data.Map ((!))
 
 -- | Version(s) of the file format supported by this library
+version :: Text
 version = "1.0"
 
 -- | List of built-in operators
+operators :: [Text]
 operators = ["*","/","+","-","~","==","<","not","&","|","if"]
 
 -- | Return arity of a built-in operator
