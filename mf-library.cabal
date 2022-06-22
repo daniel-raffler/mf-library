@@ -25,6 +25,8 @@ source-repository head
 
 library
   exposed-modules:
+      MachineF
+      MachineF.Atoms
       MachineF.ByteCode
   other-modules:
       Paths_mf_library
@@ -32,4 +34,8 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , bytestring
+    , containers
+    , text
+    , zip-archive
   default-language: Haskell2010
