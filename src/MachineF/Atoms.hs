@@ -20,7 +20,7 @@ module MachineF.Atoms (
 import Data.Text.Lazy (Text)
 
 -- | Represention of integer/bool literals
-data Value = IVal Int | BVal Bool
+data Value = VInt Int | VBool Bool
   deriving Show
 
 -- | Representation of a variable name.

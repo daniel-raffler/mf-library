@@ -83,8 +83,8 @@ bTable info = Zip.toEntry "table" 0 (Encode.encodeUtf8 table)
 
 bCode :: [Opcode] -> Entry
 bCode ops = Zip.toEntry "code" 0 (Encode.encodeUtf8 code)
-  where bVal (IVal v) = show v
-        bVal (BVal v) = show v
+  where bVal (VInt  v) = show v
+        bVal (VBool v) = show v
         
         bOp v = op v ++ "\n"
           where op  Reset        = "Reset"
@@ -125,9 +125,9 @@ pTable e = [Info (Text.pack f) (read k) (read a) | [f,k,a] <- map List.words tab
 
 pCode :: Entry -> [Opcode]
 pCode e = [pOp f0 fx | (f0:fx) <- map List.words code]
-  where pVal "True"  = BVal True
-        pVal "False" = BVal False
-        pVal k       = IVal (read k)
+  where pVal "True"  = VBool True
+        pVal "False" = VBool False
+        pVal k       = VInt (read k)
         
         pOp "Reset"     []  = Reset
         pOp "Pushval"   [v] = Pushval $ pVal v
